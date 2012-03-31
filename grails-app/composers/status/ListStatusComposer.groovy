@@ -7,17 +7,19 @@ import org.zkoss.zk.ui.event.*
 import org.zkoss.zk.ui.select.annotation.Wire
 import org.zkoss.zk.ui.select.annotation.Listen
 import org.zkoss.zk.ui.Executions
+import openinventory.Status
 
 class ListStatusComposer extends GrailsComposer {
 
     Window listStatusWindow
     Grid statusGrid
     ListModelList listModel = new ListModelList()
-    
+    Paging paging
     
     
     def afterCompose = { window ->
         // initialize components here
+        paging = statusGrid.getPagingChild() 
         statusGrid.setRowRenderer(rowRenderer as RowRenderer)
         statusGrid.setModel(listModel)
         redraw()
@@ -25,10 +27,10 @@ class ListStatusComposer extends GrailsComposer {
     
     void reloadTable()
     {
-        personGrid.setRowRenderer(rowRenderer as RowRenderer)
+        statusGrid.setRowRenderer(rowRenderer as RowRenderer)
         listModel = new ListModelList()
         redraw(0)
-        personGrid.setModel(listModel)
+        statusGrid.setModel(listModel)
         
     }
     
@@ -41,19 +43,18 @@ class ListStatusComposer extends GrailsComposer {
     private redraw(int activePage = 0) {
         int offset = activePage * paging.pageSize
         int max = paging.pageSize
-        def personInstanceList = Person.createCriteria().list(offset: offset, max: max) {
+        def statusInstanceList = Status.createCriteria().list(offset: offset, max: max) {
             //eq("deleted", false)
             //order('firstName','desc')
         }
-        paging.totalSize = personInstanceList.totalCount
+        paging.totalSize = statusInstanceList.totalCount
         listModel.clear()
-        listModel.addAll(personInstanceList.id)
+        listModel.addAll(statusInstanceList.id)
     }
     
     private rowRenderer = {Row row, Object id, int index ->
-        def personInstance = Person.get(id)
-        row.appendChild(new Label(personInstance.firstName))
-        row.appendChild(new Label(personInstance.lastName))
+        def statusInstance = Status.get(id)
+        row.appendChild(new Label(statusInstance.status))
         Hbox actionsBox = new Hbox()
         
         Button cmdView = new Button(label:'View', image:'/images/heart.png')
@@ -74,8 +75,8 @@ class ListStatusComposer extends GrailsComposer {
         cmdDelete.addEventListener("onClick", new EventListener(){
                 public void onEvent(Event event) throws Exception{
                     listModel.remove(personInstance.id)
-                    personInstance.deleted = true
-                    personInstance.merge(flush:true)
+                    statusInstance.deleted = true
+                    statusInstance.merge(flush:true)
                     reloadTable()
                     Messagebox.show("Status Deleted!", "Status", Messagebox.OK, Messagebox.INFORMATION)
                 }

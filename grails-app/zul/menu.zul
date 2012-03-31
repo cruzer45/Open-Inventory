@@ -46,9 +46,9 @@
                         <menuitem label="View / Edit Maintenance Record" />
                     </menupopup>
                 </menu>
-                <menu label="Statuses">
+                <menu label="Statuses" id="statuMenu">
                     <menupopup>
-                        <menuitem label="List Statuses" />
+                        <menuitem label="List Statuses" id="cmdListStatus"/>
                         <menuitem label="Add Status" />
                         <menuitem label="View / Edit Status" />
                     </menupopup>
