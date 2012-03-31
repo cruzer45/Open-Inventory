@@ -26,9 +26,8 @@
                 </menu>
                 <menu label="Departments">
                     <menupopup>
-                        <menuitem label="List Departments" />
-                        <menuitem label="Add Department" />
-                        <menuitem label="View / Edit Department" />
+                        <menuitem label="List Departments" id="menuListDepartments"/>
+                        <menuitem label="Add Department" id="menuAddDepartment"/>
                     </menupopup>
                 </menu>
             

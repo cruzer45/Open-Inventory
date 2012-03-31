@@ -10,9 +10,12 @@ import org.zkoss.zk.ui.Executions
 
 class MenuComposer extends GrailsComposer {
 
+    def appArea
     Menuitem menuListStatus
     Menuitem menuAddStatus
-    def appArea
+    Menuitem menuListDepartments
+    Menuitem menuAddDepartment
+    
     
     def afterCompose = { window ->
         // initialize components here
@@ -22,9 +25,16 @@ class MenuComposer extends GrailsComposer {
         appArea.getChildren().clear()
         Executions.createComponents("status/listStatus.zul", appArea, null)
     }
+    
     void onClick_menuAddStatus(){
         Window win = (Window) Executions.createComponents("status/statusCRUD.zul", appArea,null)
         win.setClosable(true)
         win.doModal()
     }
+    
+    void onClick_menuListDepartments(){
+        appArea.getChildren().clear()
+        Executions.createComponents("department/listDepartment.zul", appArea, null)
+    }
+    
 }
