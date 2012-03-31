@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?-->
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window apply="openinventory.MenuComposer" height="100%" width="100%" id="menuWindow">
+        <hbox>
+            <menubar id="menubar" autodrop="true" orient="vertical" >
+                <menu label="Assets">
+                    <menupopup>
+                        <menu label="List Assets"/>
+                        <menu label="Add Asset"/>
+                        <menu label="View / Edit Assets"/>
+                    </menupopup>
+                </menu>
+                <menu label="Asset Categories">
+                    <menupopup>
+                        <menuitem label="List Asset Categories" />
+                        <menuitem label="Add Asset Category" />
+                        <menuitem label="View / Edit Asset Category" />
+                    </menupopup>
+                </menu>
+                <menu label="Departments">
+                    <menupopup>
+                        <menuitem label="List Departments" />
+                        <menuitem label="Add Department" />
+                        <menuitem label="View / Edit Department" />
+                    </menupopup>
+                </menu>
+            
+                <menu label="Employees">
+                    <menupopup>
+                        <menuitem label="List Employees" />
+                        <menuitem label="Add Employee" />
+                        <menuitem label="View / Edit Employee" />
+                    </menupopup>
+                </menu>
+                <menu label="Maintenance">
+                    <menupopup>
+                        <menuitem label="List Maintenance Records" />
+                        <menuitem label="Add Maintenance Record" />
+                        <menuitem label="View / Edit Maintenance Record" />
+                    </menupopup>
+                </menu>
+                <menu label="Statuses">
+                    <menupopup>
+                        <menuitem label="List Statuses" />
+                        <menuitem label="Add Status" />
+                        <menuitem label="View / Edit Status" />
+                    </menupopup>
+                </menu>
+            </menubar>
+        </hbox>
+    </window>
+</zk>
