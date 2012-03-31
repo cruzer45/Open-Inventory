@@ -48,9 +48,8 @@
                 </menu>
                 <menu label="Statuses" id="statuMenu">
                     <menupopup>
-                        <menuitem label="List Statuses" id="cmdListStatus"/>
-                        <menuitem label="Add Status" />
-                        <menuitem label="View / Edit Status" />
+                        <menuitem label="List Statuses" id="menuListStatus"/>
+                        <menuitem label="Add Status" id="menuAddStatus"/>
                     </menupopup>
                 </menu>
             </menubar>

@@ -11,10 +11,13 @@ import openinventory.Status
 
 class ListStatusComposer extends GrailsComposer {
 
+   
     Window listStatusWindow
     Grid statusGrid
     ListModelList listModel = new ListModelList()
     Paging paging
+    Button cmdAdd
+    def appArea
     
     
     def afterCompose = { window ->
@@ -34,6 +37,21 @@ class ListStatusComposer extends GrailsComposer {
         
     }
     
+    void onClick_cmdAdd()
+    {
+        Window win = (Window) Executions.createComponents("status/statusCRUD.zul", listStatusWindow,null)
+        win.setClosable(true)
+        win.doModal()
+    }
+    
+    void onClick_cmdRefresh()
+    {
+        //reload the table
+        appArea.getChildren().clear()
+        Executions.createComponents("status/listStatus.zul", appArea, null)
+    }
+    
+    
     void onPaging_paging(Event e)
     {
         def event = e.origin
@@ -45,7 +63,7 @@ class ListStatusComposer extends GrailsComposer {
         int max = paging.pageSize
         def statusInstanceList = Status.createCriteria().list(offset: offset, max: max) {
             //eq("deleted", false)
-            //order('firstName','desc')
+            order('status','asc')
         }
         paging.totalSize = statusInstanceList.totalCount
         listModel.clear()
@@ -54,7 +72,30 @@ class ListStatusComposer extends GrailsComposer {
     
     private rowRenderer = {Row row, Object id, int index ->
         def statusInstance = Status.get(id)
-        row.appendChild(new Label(statusInstance.status))
+        
+        Cell labelCell = new Cell()
+        labelCell.setValign('center')
+        labelCell.appendChild(new Label(statusInstance.status))
+        row.appendChild(labelCell)
+        
+        Cell enabledCell = new Cell()
+        enabledCell.setValign('center')
+        
+        Label lblenabled = new Label()
+        if (statusInstance.deleted)
+        {
+            lblenabled.setValue("Disabled")
+        }
+        
+        else
+        {
+            lblenabled.setValue("Enabled")
+        }
+        
+        enabledCell.appendChild(lblenabled)
+        row.appendChild(enabledCell)
+        
+        
         Hbox actionsBox = new Hbox()
         
         Button cmdView = new Button(label:'View', image:'/images/heart.png')
@@ -63,27 +104,17 @@ class ListStatusComposer extends GrailsComposer {
                     HashMap map = new HashMap<String, String>()
                     String statusID = id
                     map.put("statusID", statusID)
-//                    Window win = (Window) Executions.createComponents("personCRUD.zul", personListWindow,map)
-//                    win.setClosable(true)
-//                    win.doModal()
+                    Window win = (Window) Executions.createComponents("status/statusCRUD.zul", listStatusWindow,map)
+                    win.setClosable(true)
+                    win.doModal()
                     reloadTable()
                 }
             })
         actionsBox.appendChild(cmdView)
-        
-        Button cmdDelete = new Button(label:'Delete', image:'/images/heart_delete.png')
-        cmdDelete.addEventListener("onClick", new EventListener(){
-                public void onEvent(Event event) throws Exception{
-                    listModel.remove(personInstance.id)
-                    statusInstance.deleted = true
-                    statusInstance.merge(flush:true)
-                    reloadTable()
-                    Messagebox.show("Status Deleted!", "Status", Messagebox.OK, Messagebox.INFORMATION)
-                }
-            })
-        actionsBox.appendChild(cmdDelete)
-
-        row.appendChild(actionsBox)
+       
+        Cell actionCell = new Cell()
+        actionCell.setValign('center')
+        actionCell.appendChild(actionsBox)
+        row.appendChild(actionCell)
     }
-    
 }

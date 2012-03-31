@@ -7,12 +7,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
-    <window apply="status.ListStatusComposer" id="listStatusWindow">
+    <window apply="status.ListStatusComposer" id="listStatusWindow" height="100%" width="100%">
 
-        <grid id="statusGrid" vflex="true" hflex="true" autopaging="true" mold="paging">
+        <hbox height="45px" align="center" hflex="true" width="100%">
+            <button label="Add Status" id="cmdAdd" image="/images/add.png"/> 
+            <button label="Refresh" id="cmdRefresh" image="/images/arrow_refresh.png"/>
+        </hbox>
+        <separator bar="true"/>
+        <grid id="statusGrid" vflex="true" hflex="true" autopaging="true" mold="paging" width="100%">
             <columns>
-                <column label="Status"/>
-                <column label="Actions"/>
+                <column label="Status" />
+                <column label="Enabled" />
+                <column label="Actions" />
             </columns>
         </grid>
 
