@@ -21,7 +21,7 @@
                         <textbox id="txtStatus" width="98%"/>
                     </row>
                     <row >
-                        <label value="Deleted" />
+                        <label value="Disabled" />
                         <checkbox id="chkDeleted" label="" />
                     </row>
                 </rows>

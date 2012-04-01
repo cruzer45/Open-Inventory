@@ -38,9 +38,9 @@ class ListDepartmentComposer extends GrailsComposer {
     
     void onClick_cmdAdd()
     {
-        //        Window win = (Window) Executions.createComponents("status/statusCRUD.zul", listStatusWindow,null)
-        //        win.setClosable(true)
-        //        win.doModal()
+        Window win = (Window) Executions.createComponents("department/departmentCRUD.zul", departmentWindow,null)
+        win.setClosable(true)
+        win.doModal()
     }
     
     void onClick_cmdRefresh()
@@ -96,16 +96,15 @@ class ListDepartmentComposer extends GrailsComposer {
         
         Hbox actionsBox = new Hbox()
         
-        Button cmdView = new Button(label:'View', image:'/images/heart.png')
+        Button cmdView = new Button(label:'View', image:'/images/group.png')
         cmdView.addEventListener("onClick", new EventListener(){
                 public void onEvent(Event event) throws Exception{
                     HashMap map = new HashMap<String, String>()
                     String deptID = id
-                    map.put("deptID", statusID)
-                    //                    Window win = (Window) Executions.createComponents("status/statusCRUD.zul", listStatusWindow,map)
-                    //                    win.setClosable(true)
-                    //                    win.doModal()
-                    reloadTable()
+                    map.put("deptID", deptID)
+                    Window win = (Window) Executions.createComponents("department/departmentCRUD.zul", departmentWindow,map)
+                    win.setClosable(true)
+                    win.doModal()
                 }
             })
         actionsBox.appendChild(cmdView)

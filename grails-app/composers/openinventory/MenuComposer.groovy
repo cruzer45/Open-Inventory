@@ -15,7 +15,7 @@ class MenuComposer extends GrailsComposer {
     Menuitem menuAddStatus
     Menuitem menuListDepartments
     Menuitem menuAddDepartment
-    
+    Menuitem menuLogout
     
     def afterCompose = { window ->
         // initialize components here
@@ -37,4 +37,7 @@ class MenuComposer extends GrailsComposer {
         Executions.createComponents("department/listDepartment.zul", appArea, null)
     }
     
+     void onClick_menuLogout(){
+       execution.sendRedirect('/logout')
+    }
 }

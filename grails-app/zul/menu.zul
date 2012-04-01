@@ -51,6 +51,7 @@
                         <menuitem label="Add Status" id="menuAddStatus"/>
                     </menupopup>
                 </menu>
+                 <menuitem label="Logout" id="menuLogout"/>
             </menubar>
         </hbox>
     </window>
