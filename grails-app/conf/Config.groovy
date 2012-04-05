@@ -36,7 +36,7 @@ grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
 
 
 // The default codec used to encode data with ${}
-grails.views.default.codec = "none" // none, html, base64
+grails.views.default.codec = "html" // none, html, base64
 grails.views.gsp.encoding = "UTF-8"
 grails.converters.encoding = "UTF-8"
 // enable Sitemesh preprocessing of GSP pages
@@ -96,3 +96,9 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'openinventory.security.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'openinventory.security.UserRole'
 grails.plugins.springsecurity.authority.className = 'openinventory.security.Role'
+
+
+//Cloud Foundry settings
+grails.plugin.cloudfoundry.username = 'cruzer45@gmail.com'
+grails.plugin.cloudfoundry.password = '8xf4cS3Y'
+grails.plugin.cloudfoundry.appname = 'openInventory'

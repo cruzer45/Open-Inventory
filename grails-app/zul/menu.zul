@@ -14,14 +14,12 @@
                     <menupopup>
                         <menu label="List Assets"/>
                         <menu label="Add Asset"/>
-                        <menu label="View / Edit Assets"/>
                     </menupopup>
                 </menu>
                 <menu label="Asset Categories">
                     <menupopup>
                         <menuitem label="List Asset Categories" />
                         <menuitem label="Add Asset Category" />
-                        <menuitem label="View / Edit Asset Category" />
                     </menupopup>
                 </menu>
                 <menu label="Departments">
@@ -35,14 +33,12 @@
                     <menupopup>
                         <menuitem label="List Employees" />
                         <menuitem label="Add Employee" />
-                        <menuitem label="View / Edit Employee" />
                     </menupopup>
                 </menu>
                 <menu label="Maintenance">
                     <menupopup>
                         <menuitem label="List Maintenance Records" />
                         <menuitem label="Add Maintenance Record" />
-                        <menuitem label="View / Edit Maintenance Record" />
                     </menupopup>
                 </menu>
                 <menu label="Statuses" id="statuMenu">
@@ -51,7 +47,7 @@
                         <menuitem label="Add Status" id="menuAddStatus"/>
                     </menupopup>
                 </menu>
-                 <menuitem label="Logout" id="menuLogout"/>
+                <menuitem label="Logout" id="menuLogout"/>
             </menubar>
         </hbox>
     </window>

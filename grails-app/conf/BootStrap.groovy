@@ -59,7 +59,6 @@ class BootStrap {
             new Status(status: 'No Longer Used' ).save(flush:true)
         } 
         
-         
         def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
 
         def admin = User.findByUsername('admin') ?: new User(username: 'admin', enabled: true, password: 'password').save(failOnError: true)

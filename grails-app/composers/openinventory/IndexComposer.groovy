@@ -19,11 +19,11 @@ class IndexComposer extends GrailsComposer {
         }
     }
     
-    def beforeCompose = { window ->
-        // initialize components here
-        
-        if(!springSecurityService.isLoggedIn()){
-            execution.sendRedirect('/login')
-        }
-    }
+//    def beforeCompose = { window ->
+//        // initialize components here
+//        
+//        if(!springSecurityService.isLoggedIn()){
+//            execution.sendRedirect('/login')
+//        }
+//    }
 }
