@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+<!--?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?-->
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 
 <zk xmlns="http://www.zkoss.org/2005/zul"
@@ -7,15 +7,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
-    <window apply="assetCategory.ListAssetCategoriesComposer" height="100%" width="100%" id="departmentWindow">
+    <window apply="assetCategory.ListAssetCategoriesComposer" height="100%" width="100%" id="assetCategoryWindow">
         <hbox height="45px" align="center" hflex="true" width="100%">
-            <button label="Add Status" id="cmdAdd" image="/images/add.png"/> 
+            <button label="Add Asset Category" id="cmdAdd" image="/images/add.png"/> 
             <button label="Refresh" id="cmdRefresh" image="/images/arrow_refresh.png"/>
         </hbox>
         <separator bar="true"/>
-        <grid id="departmentGrid" vflex="true" hflex="true" autopaging="true" mold="paging" width="100%">
+        <grid id="assetCategoryGrid" vflex="true" hflex="true" autopaging="true" mold="paging" width="100%">
             <columns>
-                <column label="Department" />
+                <column label="AssetCategory" />
                 <column label="Enabled" />
                 <column label="Actions" />
             </columns>

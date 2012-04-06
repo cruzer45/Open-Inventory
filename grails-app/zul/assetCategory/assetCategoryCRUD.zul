@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?-->
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window apply="assetCategory.AssetCategoryCRUDComposer" border="normal" title="Department" width="400px">
+
+        <vlayout>
+            <grid id="assetCategoryGrid" >
+                <columns>
+                    <column width="100px" valign="top"/>
+                    <column />
+                </columns>
+                <rows>
+                    <row >
+                        <label value="Asset Category" />
+                        <textbox id="txtAssetCategory" width="98%"/>
+                    </row>
+                    <row >
+                        <label value="Default Details" />
+                        <textbox id="txtAssetCategoryDetails" width="98%" rows="6"/>
+                    </row>
+                    <row >
+                        <label value="Disabled" />
+                        <checkbox id="chkDeleted" label="" />
+                    </row>
+                </rows>
+            </grid>
+        </vlayout>
+        <hbox align="center" spacing="10px" pack="end" width="100%" height="30px">
+            <button label="Save" id="cmdSave" image="images/accept.png" autodisable="self" />
+            <button label="Cancel" id="cmdCancel" image="images/cross.png"/>
+        </hbox>
+    </window>
+
+</zk>

@@ -9,7 +9,7 @@
 
     <window apply="department.ListDepartmentComposer" height="100%" width="100%" id="departmentWindow">
         <hbox height="45px" align="center" hflex="true" width="100%">
-            <button label="Add Status" id="cmdAdd" image="/images/add.png"/> 
+            <button label="Add Department" id="cmdAdd" image="/images/add.png"/> 
             <button label="Refresh" id="cmdRefresh" image="/images/arrow_refresh.png"/>
         </hbox>
         <separator bar="true"/>

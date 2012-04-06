@@ -37,7 +37,12 @@ class MenuComposer extends GrailsComposer {
         Executions.createComponents("department/listDepartment.zul", appArea, null)
     }
     
-     void onClick_menuLogout(){
+    void onClick_menuLogout(){
        execution.sendRedirect('/logout')
+    }
+
+    void onClick_menuListAssetCategories(){
+        appArea.getChildren().clear()
+        Executions.createComponents("assetCategory/listAssetCategories.zul", appArea, null)
     }
 }

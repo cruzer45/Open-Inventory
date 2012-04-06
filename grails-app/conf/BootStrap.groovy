@@ -10,15 +10,15 @@ class BootStrap {
     def init = { servletContext ->
         if (AssetCategory.count() == 0)
         {
-            new AssetCategory(category: 'Phone' ).save(flush:true)
-            new AssetCategory(category: 'Computer' ).save(flush:true)
-            new AssetCategory(category: 'Printer' ).save(flush:true)
-            new AssetCategory(category: 'Fax' ).save(flush:true)
-            new AssetCategory(category: 'UPS' ).save(flush:true)
-            new AssetCategory(category: 'Monitor' ).save(flush:true)
-            new AssetCategory(category: 'Digital Camera' ).save(flush:true)
-            new AssetCategory(category: 'Scanner' ).save(flush:true)
-            new AssetCategory(category: 'Speakers' ).save(flush:true)
+            new AssetCategory(category: 'Phone', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Computer', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Printer', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Fax', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'UPS', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Monitor', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Digital Camera', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Scanner', details: '1' ).save(flush:true)
+            new AssetCategory(category: 'Speakers', details: '1' ).save(flush:true)
         }
 		
         if (Department.count() == 0)

@@ -1,7 +1,6 @@
 package department
 
 import org.zkoss.zk.grails.composer.*
-
 import org.zkoss.zk.ui.select.annotation.Wire
 import org.zkoss.zk.ui.select.annotation.Listen
 import org.zkoss.zul.*

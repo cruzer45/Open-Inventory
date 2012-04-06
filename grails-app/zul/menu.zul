@@ -16,19 +16,9 @@
                         <menu label="Add Asset"/>
                     </menupopup>
                 </menu>
-                <menu label="Asset Categories">
-                    <menupopup>
-                        <menuitem label="List Asset Categories" />
-                        <menuitem label="Add Asset Category" />
-                    </menupopup>
-                </menu>
-                <menu label="Departments">
-                    <menupopup>
-                        <menuitem label="List Departments" id="menuListDepartments"/>
-                        <menuitem label="Add Department" id="menuAddDepartment"/>
-                    </menupopup>
-                </menu>
-            
+
+                 <menuitem label="Asset Categories" id="menuListAssetCategories"/>
+                <menuitem label="Departments" id="menuListDepartments" width="100%"/>
                 <menu label="Employees">
                     <menupopup>
                         <menuitem label="List Employees" />
@@ -41,12 +31,7 @@
                         <menuitem label="Add Maintenance Record" />
                     </menupopup>
                 </menu>
-                <menu label="Statuses" id="statuMenu">
-                    <menupopup>
-                        <menuitem label="List Statuses" id="menuListStatus"/>
-                        <menuitem label="Add Status" id="menuAddStatus"/>
-                    </menupopup>
-                </menu>
+                <menuitem label="Status" id="menuListStatus" width="100%"/>
                 <menuitem label="Logout" id="menuLogout"/>
             </menubar>
         </hbox>
