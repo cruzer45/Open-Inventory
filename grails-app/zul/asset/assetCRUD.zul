@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?-->
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+    <window apply="asset.AssetCRUDComposer" border="normal" title="Asset" width="400px">
+
+        <vlayout>
+            <grid id="assetCategoryGrid" >
+                <columns>
+                    <column width="100px" valign="top"/>
+                    <column />
+                </columns>
+                <rows>
+                    <row >
+                        <label value="Asset Category" />      
+                        <listbox rows="1" mold="select" width="98%" id="cmbAssetCategory"/>
+                    </row>
+                    <row >
+                        <label value="Make" />
+                        <textbox id="txtMake" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Model" />
+                        <textbox id="txtModel" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Serial Number" />
+                        <textbox id="txtSerialNumber" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Description" />
+                        <textbox id="txtDescription" width="98%" rows="6"/>
+                    </row>
+                    <row >
+                        <label value="Asset Tag" />
+                        <textbox id="txtAssetTag" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Date Aquired" />
+                        <datebox id="calDateAquired" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Condition" />      
+                        <listbox rows="1" mold="select" width="98%" id="cmbCondition"/>
+                    </row>
+                    <row >
+                        <label value="Department" />      
+                        <listbox rows="1" mold="select" width="98%" id="cmbDepartment"/>
+                    </row>
+                </rows>
+            </grid>
+        </vlayout>
+        <hbox align="center" spacing="10px" pack="end" width="100%" height="30px">
+            <button label="Save" id="cmdSave" image="images/accept.png" autodisable="self" />
+            <button label="Cancel" id="cmdCancel" image="images/cross.png"/>
+        </hbox>
+    </window>
+
+</zk>

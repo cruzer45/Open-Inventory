@@ -10,12 +10,7 @@
     <window apply="openinventory.MenuComposer" height="100%" width="100%" id="menuWindow">
         <hbox>
             <menubar id="menubar" autodrop="true" orient="vertical" >
-                <menu label="Assets">
-                    <menupopup>
-                        <menu label="List Assets"/>
-                        <menu label="Add Asset"/>
-                    </menupopup>
-                </menu>
+                <menuitem label="Add Assets" id="menuAddAssets"/>               
 
                  <menuitem label="Asset Categories" id="menuListAssetCategories"/>
                 <menuitem label="Departments" id="menuListDepartments" width="100%"/>

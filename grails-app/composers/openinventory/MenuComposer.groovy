@@ -16,6 +16,8 @@ class MenuComposer extends GrailsComposer {
     Menuitem menuListDepartments
     Menuitem menuAddDepartment
     Menuitem menuLogout
+    Menuitem menuListAssetCategories
+    Menuitem menuAddAssets
     
     def afterCompose = { window ->
         // initialize components here
@@ -44,5 +46,10 @@ class MenuComposer extends GrailsComposer {
     void onClick_menuListAssetCategories(){
         appArea.getChildren().clear()
         Executions.createComponents("assetCategory/listAssetCategories.zul", appArea, null)
+    }
+
+    void onClick_menuAddAssets()    {
+        appArea.getChildren().clear()
+        Executions.createComponents("asset/assetCRUD.zul", appArea, null)
     }
 }
