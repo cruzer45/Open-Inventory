@@ -52,6 +52,30 @@
                         <label value="Department" />      
                         <listbox rows="1" mold="select" width="98%" id="cmbDepartment"/>
                     </row>
+                    <row >
+                        <label value="Purchase Price" />
+                        <decimalbox id="txtPurchasePrice" format="#,###.##" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Expected Life" />
+                        <intbox id="txtExpectedLife" constraint="no negative,no zero" width="98%" maxlength="2"/>
+                    </row>
+                    <row >
+                        <label value="Current Value" />
+                        <decimalbox id="txtCurrentValue" format="#,###.##" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Salvage Price" />
+                        <decimalbox id="txtSalvagePrice" format="#,###.##" width="98%" />
+                    </row>
+                    <row >
+                        <label value="Comments" />
+                        <textbox id="txtComments" width="98%" rows="6"/>
+                    </row>
+                     <row >
+                        <label value="Next Maintenance" />
+                        <datebox id="calNextMaintenance" width="98%" />
+                    </row>
                 </rows>
             </grid>
         </vlayout>
