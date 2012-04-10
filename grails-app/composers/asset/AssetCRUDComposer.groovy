@@ -31,7 +31,7 @@ class AssetCRUDComposer extends GrailsComposer {
         //load statuses
         def departmentList = Department.createCriteria().list() { eq("deleted", false) order('department','asc') }
         for (department in departmentList){ cmbDepartment.appendItem(department.department , department.id.toString()) }  
-        
-
     }
+
+    
 }

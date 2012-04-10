@@ -9,8 +9,17 @@
 
     <window apply="asset.AssetCRUDComposer" border="normal" title="Asset" width="400px">
 
-        <vlayout>
-            <grid id="assetCategoryGrid" >
+
+
+<tabbox id="tb" >
+    <tabs id="tabs">
+        <tab id="generalTab" label="General" />
+        <tab id="costingTab" label="Costing" />
+        <tab id="maintananceTab" label="Maintenance" />
+    </tabs>
+    <tabpanels>
+        <tabpanel>
+            <grid id="assetCategoryGrid1" >
                 <columns>
                     <column width="100px" valign="top"/>
                     <column />
@@ -33,7 +42,7 @@
                         <textbox id="txtSerialNumber" width="98%" />
                     </row>
                     <row >
-                        <label value="Description" />
+                        <label value="Details" />
                         <textbox id="txtDescription" width="98%" rows="6"/>
                     </row>
                     <row >
@@ -41,25 +50,25 @@
                         <textbox id="txtAssetTag" width="98%" />
                     </row>
                     <row >
-                        <label value="Date Aquired" />
-                        <datebox id="calDateAquired" width="98%" />
-                    </row>
-                    <row >
-                        <label value="Condition" />      
-                        <listbox rows="1" mold="select" width="98%" id="cmbCondition"/>
-                    </row>
-                    <row >
                         <label value="Department" />      
                         <listbox rows="1" mold="select" width="98%" id="cmbDepartment"/>
                     </row>
+                   
+                </rows>
+            </grid>
+        </tabpanel>
+        <tabpanel>
+            <grid id="assetCategoryGrid2" >
+                <columns>
+                    <column width="100px" valign="top"/>
+                    <column />
+                </columns>
+                <rows>
                     <row >
                         <label value="Purchase Price" />
                         <decimalbox id="txtPurchasePrice" format="#,###.##" width="98%" />
                     </row>
-                    <row >
-                        <label value="Expected Life" />
-                        <intbox id="txtExpectedLife" constraint="no negative,no zero" width="98%" maxlength="2"/>
-                    </row>
+                    
                     <row >
                         <label value="Current Value" />
                         <decimalbox id="txtCurrentValue" format="#,###.##" width="98%" />
@@ -67,6 +76,28 @@
                     <row >
                         <label value="Salvage Price" />
                         <decimalbox id="txtSalvagePrice" format="#,###.##" width="98%" />
+                    </row>
+                </rows>
+            </grid></tabpanel>
+        <tabpanel>
+            <grid id="assetCategoryGrid3" >
+                <columns>
+                    <column width="100px" valign="top"/>
+                    <column />
+                </columns>
+                <rows>
+                    
+                    <row >
+                        <label value="Date Aquired" />
+                        <datebox id="calDateAquired" width="98%" constraint="no empty, no future: You can only select a date that has occurred."/>
+                    </row>
+                    <row >
+                        <label value="Expected Life" />
+                        <intbox id="txtExpectedLife" constraint="no negative,no zero"  width="98%" maxlength="2"/>
+                    </row>
+                    <row >
+                        <label value="Condition" />      
+                        <listbox rows="1" mold="select" width="98%" id="cmbCondition"/>
                     </row>
                     <row >
                         <label value="Comments" />
@@ -78,6 +109,10 @@
                     </row>
                 </rows>
             </grid>
+        </tabpanel>
+    </tabpanels>
+</tabbox>
+        <vlayout>
         </vlayout>
         <hbox align="center" spacing="10px" pack="end" width="100%" height="30px">
             <button label="Save" id="cmdSave" image="images/accept.png" autodisable="self" />
