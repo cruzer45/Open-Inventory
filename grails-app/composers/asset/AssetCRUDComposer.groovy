@@ -13,7 +13,7 @@ import openinventory.Asset
 
 class AssetCRUDComposer extends GrailsComposer {
 
-	
+	def appArea
     Listbox cmbAssetCategory
     Listbox cmbCondition
     Listbox cmbDepartment
@@ -68,22 +68,22 @@ class AssetCRUDComposer extends GrailsComposer {
         def assetDept = Department.get(cmbDepartment.getSelectedItem()?.getValue()) 
 
         asset.assetCategory =  assetCategory
-        asset.description = txtDescription.getValue()?.trim()
-        asset.make = txtMake.getValue()?.trim()?.capitalize() 
-        asset.model = txtModel.getValue()?.trim()?.capitalize() 
-        asset.serialNumber = txtSerialNumber.getValue()?.trim()?.capitalize() 
+        asset.description = txtDescription.getValue()?.trim() ?: ' '
+        asset.make = txtMake.getValue()?.trim()?.capitalize() ?: ' '
+        asset.model = txtModel.getValue()?.trim()?.capitalize() ?: ' '
+        asset.serialNumber = txtSerialNumber.getValue()?.trim()?.capitalize() ?: ' '
         //asset.barcodeNumber = ''
-        asset.assetTag = txtAssetTag.getValue()?.trim()?.capitalize() 
-        asset.aquired = calDateAquired.getValue()
-        asset.status = assetStatus
+        asset.assetTag = txtAssetTag.getValue()?.trim()?.capitalize() ?: ' '
+        asset.aquired = calDateAquired.getValue() ?: ''
+        asset.status = assetStatus ?: Status.findByStatus("Unknown")
         //asset.employee
-        asset.department = assetDept
-        asset.purchasePrice = txtPurchasePrice.doubleValue()
-        asset.expectedLife =  txtExpectedLife.intValue() 
-        asset.salvageValue = txtSalvagePrice.doubleValue()
-        asset.currentValue = txtCurrentValue.doubleValue()
-        asset.comments = txtComments.getValue()?.trim()
-        asset.nextScheduledMaintenance = calNextMaintenance.getValue()
+        asset.department = assetDept 
+        asset.purchasePrice = txtPurchasePrice.doubleValue() ?: 0.0
+        asset.expectedLife =  txtExpectedLife.intValue() ?: 0.0
+        asset.salvageValue = txtSalvagePrice.doubleValue() ?: 0.0
+        asset.currentValue = txtCurrentValue.doubleValue() ?: 0.0
+        asset.comments = txtComments.getValue()?.trim() ?: 0.0
+        asset.nextScheduledMaintenance = calNextMaintenance.getValue()  ?: defaultNextMaintenance()
         
         
         asset = asset.merge(flush:true)
@@ -93,5 +93,12 @@ class AssetCRUDComposer extends GrailsComposer {
         appArea.getChildren().clear()
         Executions.createComponents("assetCategory/listAssetCategories.zul", appArea, null)
         onClick_cmdCancel()
+    }
+
+    Date defaultNextMaintenance() {
+        def c = new GregorianCalendar()
+        c.setTime(new Date())
+        c.add(6, java.util.Calendar.MONTH)
+        return c.getTime()
     }
 }

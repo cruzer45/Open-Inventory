@@ -56,6 +56,7 @@ class BootStrap {
             new Status(status: 'Working - Not In Use' ).save(flush:true)
             new Status(status: 'Not Working' ).save(flush:true)
             new Status(status: 'Purged' ).save(flush:true)
+            new Status(status: 'Unknown' ).save(flush:true)
             new Status(status: 'No Longer Used' ).save(flush:true)
         } 
         

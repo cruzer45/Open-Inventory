@@ -3,31 +3,35 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 
 <zk xmlns="http://www.zkoss.org/2005/zul"
-    xmlns:h="http://www.w3.org/1999/xhtml"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
 
-    <window apply="openinventory.IndexComposer"  vflex="true" hflex="true">
+	<window apply="openinventory.IndexComposer" vflex="true"
+		hflex="true">
 
-        <borderlayout width="100%" hflex="true">
-            <north flex="true" maxsize="250" >
-                <div style="font-size:18px; align:centre;">
-                    <label value="OpenInventory" style="font-size:18px;"/>
-                </div>
-            </north>
-            <west title="Menu" flex="true" maxsize="250" splittable="true" collapsible="true">
-                <div id="menuArea">
-                    <include src="menu.zul" id="menu" />
-                </div>
-            </west>
-            <center border="none" flex="true">
-                <div id="appArea" >
-                    <label value="25%" style="color:white;font-size:50px" />
-                </div>
-            </center>
-            
-        </borderlayout>
+		<borderlayout width="100%" hflex="true">
+			<north flex="true" maxsize="250">
+				<div style="font-size:18px; align:centre;">
+					<label value="OpenInventory"
+						style="font-size:18px;" />
+				</div>
+			</north>
+			<west title="Menu" flex="true" maxsize="250"
+				splittable="true" collapsible="true">
+				<div id="menuArea">
+					<include src="menu.zul" id="menu" />
+				</div>
+			</west>
+			<center border="none" flex="true">
+				<div id="appArea">
+					<label value="25%"
+						style="color:white;font-size:50px" />
+				</div>
+			</center>
 
-    </window>
+		</borderlayout>
+
+	</window>
 
 </zk>

@@ -9,7 +9,7 @@ class Asset {
     String serialNumber
     String barcodeNumber
     String assetTag
-    Date aquired = new Date()
+    Date aquired
     Status status
     Employee employee
     Department department
@@ -24,7 +24,7 @@ class Asset {
     
     static constraints = {
         assetCategory(nullable:false, blank:false)
-        description(blank:true, maxSixe:1500, widget:'textArea')
+        description(blank:true, maxSixe:1500)
         make(blank:false)
         model(blank:false)
         serialNumber(blank:true)
@@ -36,9 +36,10 @@ class Asset {
         employee(nullable:true)
         sold(nullable:true)
         purchasePrice(nullable:true, scale: 2)
-        expectedLife(nulllable:true)
+        expectedLife(nullable:false)
         currentValue(nullable:true , scale: 2)
-        comments(maxSixe:1500, widget:'textArea')
+        comments(blank:true,maxSixe:1500)
+        nextScheduledMaintenance(nullable:true)
     }
     String tostring(){
         return make + " Model " + model
