@@ -9,12 +9,29 @@ import org.zkoss.zk.ui.Executions
 import openinventory.AssetCategory
 import openinventory.Status
 import openinventory.Department
+import openinventory.Asset
 
 class AssetCRUDComposer extends GrailsComposer {
 
-	Listbox cmbAssetCategory
+	
+    Listbox cmbAssetCategory
     Listbox cmbCondition
     Listbox cmbDepartment
+    Asset asset
+    Textbox txtMake
+    Textbox txtModel
+    Textbox txtSerialNumber
+    Textbox txtDescription
+    Textbox txtAssetTag
+    Decimalbox txtPurchasePrice
+    Decimalbox txtCurrentValue
+    Decimalbox txtSalvagePrice
+    Datebox calDateAquired
+    Intbox txtExpectedLife
+    Textbox txtComments
+    Datebox calNextMaintenance
+
+
 
     def afterCompose = { window ->
         // initialize components here
@@ -33,5 +50,48 @@ class AssetCRUDComposer extends GrailsComposer {
         for (department in departmentList){ cmbDepartment.appendItem(department.department , department.id.toString()) }  
     }
 
+     void onClick_cmdCancel()
+    {
+        Event closeEvent = new Event( "onClose", this.self, null )
+        Events.postEvent( closeEvent )
+    }
     
+    void onClick_cmdSave()
+    {
+        if (!asset)
+        {
+            asset = new Asset()
+        }
+
+        def assetCategory = AssetCategory.get(cmbAssetCategory.getSelectedItem()?.getValue()) 
+        def assetStatus = Status.get(cmbCondition.getSelectedItem()?.getValue()) 
+        def assetDept = Department.get(cmbDepartment.getSelectedItem()?.getValue()) 
+
+        asset.assetCategory =  assetCategory
+        asset.description = txtDescription.getValue()?.trim()
+        asset.make = txtMake.getValue()?.trim()?.capitalize() 
+        asset.model = txtModel.getValue()?.trim()?.capitalize() 
+        asset.serialNumber = txtSerialNumber.getValue()?.trim()?.capitalize() 
+        //asset.barcodeNumber = ''
+        asset.assetTag = txtAssetTag.getValue()?.trim()?.capitalize() 
+        asset.aquired = calDateAquired.getValue()
+        asset.status = assetStatus
+        //asset.employee
+        asset.department = assetDept
+        asset.purchasePrice = txtPurchasePrice.doubleValue()
+        asset.expectedLife =  txtExpectedLife.intValue() 
+        asset.salvageValue = txtSalvagePrice.doubleValue()
+        asset.currentValue = txtCurrentValue.doubleValue()
+        asset.comments = txtComments.getValue()?.trim()
+        asset.nextScheduledMaintenance = calNextMaintenance.getValue()
+        
+        
+        asset = asset.merge(flush:true)
+        asset.save(flush:true)
+        Messagebox.show("Asset Saved!", "Asset", Messagebox.OK, Messagebox.INFORMATION)
+        //reload the table
+        appArea.getChildren().clear()
+        Executions.createComponents("assetCategory/listAssetCategories.zul", appArea, null)
+        onClick_cmdCancel()
+    }
 }

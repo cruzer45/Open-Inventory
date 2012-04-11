@@ -28,7 +28,7 @@ class Asset {
         make(blank:false)
         model(blank:false)
         serialNumber(blank:true)
-        barcodeNumber(blank:true)
+        barcodeNumber(blank:true, nullable:true)
         assetTag(blank:true)
         aquired(nullable:true)
         status(nullable:false)
