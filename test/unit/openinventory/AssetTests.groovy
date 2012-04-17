@@ -11,7 +11,15 @@ import org.junit.*
 @TestFor(Asset)
 class AssetTests {
 
-    void testSomething() {
-       fail "Implement me"
-    }
+	void setUp() {
+		// Setup logic here
+	}
+
+	void tearDown() {
+		// Tear down logic here
+	}
+
+	void testCreateAsset() {
+		fail "Implement me"
+	}
 }

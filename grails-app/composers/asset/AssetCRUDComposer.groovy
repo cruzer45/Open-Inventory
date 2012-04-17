@@ -14,6 +14,7 @@ import openinventory.Asset
 class AssetCRUDComposer extends GrailsComposer {
 
 	def appArea
+	def assetService
     Listbox cmbAssetCategory
     Listbox cmbCondition
     Listbox cmbDepartment
@@ -21,7 +22,7 @@ class AssetCRUDComposer extends GrailsComposer {
     Textbox txtMake
     Textbox txtModel
     Textbox txtSerialNumber
-    Textbox txtDescription
+    Textbox txtDetails
     Textbox txtAssetTag
     Decimalbox txtPurchasePrice
     Decimalbox txtCurrentValue
@@ -67,31 +68,36 @@ class AssetCRUDComposer extends GrailsComposer {
         def assetStatus = Status.get(cmbCondition.getSelectedItem()?.getValue()) 
         def assetDept = Department.get(cmbDepartment.getSelectedItem()?.getValue()) 
 
-        asset.assetCategory =  assetCategory
-        asset.description = txtDescription.getValue()?.trim() ?: ' '
-        asset.make = txtMake.getValue()?.trim()?.capitalize() ?: ' '
-        asset.model = txtModel.getValue()?.trim()?.capitalize() ?: ' '
-        asset.serialNumber = txtSerialNumber.getValue()?.trim()?.capitalize() ?: ' '
-        //asset.barcodeNumber = ''
-        asset.assetTag = txtAssetTag.getValue()?.trim()?.capitalize() ?: ' '
-        asset.aquired = calDateAquired.getValue() ?: ''
-        asset.status = assetStatus ?: Status.findByStatus("Unknown")
-        //asset.employee
-        asset.department = assetDept 
-        asset.purchasePrice = txtPurchasePrice.doubleValue() ?: 0.0
-        asset.expectedLife =  txtExpectedLife.intValue() ?: 0.0
-        asset.salvageValue = txtSalvagePrice.doubleValue() ?: 0.0
-        asset.currentValue = txtCurrentValue.doubleValue() ?: 0.0
-        asset.comments = txtComments.getValue()?.trim() ?: 0.0
-        asset.nextScheduledMaintenance = calNextMaintenance.getValue()  ?: defaultNextMaintenance()
+		def params = [
+			
+			assetCategory:  assetCategory,
+			details: txtDetails.getValue()?.trim() ?: ' ',
+			make: txtMake.getValue()?.trim()?.capitalize() ?: ' ',
+			model: txtModel.getValue()?.trim()?.capitalize() ?: ' ',
+			serialNumber: txtSerialNumber.getValue()?.trim()?.capitalize() ?: ' ',
+			//asset.barcodeNumber = ''
+			assetTag: txtAssetTag.getValue()?.trim()?.capitalize() ?: ' ',
+			aquired: calDateAquired.getValue() ?: '',
+			status: assetStatus ?: Status.findByStatus("Unknown"),
+			//asset.employee
+			department: assetDept,
+			purchasePrice: txtPurchasePrice.doubleValue() ?: 0.0,
+			expectedLife:  txtExpectedLife.intValue() ?: 0.0,
+			salvageValue: txtSalvagePrice.doubleValue() ?: 0.0,
+			currentValue: txtCurrentValue.doubleValue() ?: 0.0,
+			comments: txtComments.getValue()?.trim() ?: 0.0,
+			nextScheduledMaintenance: calNextMaintenance.getValue()  ?: defaultNextMaintenance()
+		]
+		
         
+        assetService.saveAsset(params);
         
-        asset = asset.merge(flush:true)
-        asset.save(flush:true)
+        //asset = asset.merge(flush:true)
+        //asset.save(flush:true)
         Messagebox.show("Asset Saved!", "Asset", Messagebox.OK, Messagebox.INFORMATION)
         //reload the table
         appArea.getChildren().clear()
-        Executions.createComponents("assetCategory/listAssetCategories.zul", appArea, null)
+        //Executions.createComponents("assetCategory/listAssetCategories.zul", appArea, null)
         onClick_cmdCancel()
     }
 

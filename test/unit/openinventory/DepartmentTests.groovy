@@ -11,7 +11,8 @@ import org.junit.*
 @TestFor(Department)
 class DepartmentTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testCreateDepartment() {
+       def dept = new Department(department: 'Accounts',deleted: false ).save()
+	   assertNotNull(dept)
     }
 }

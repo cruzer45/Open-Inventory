@@ -3,11 +3,10 @@ package openinventory
 class Asset {
     
     AssetCategory assetCategory
-    String description
+    String details
     String make
     String model
     String serialNumber
-    String barcodeNumber
     String assetTag
     Date aquired
     Status status
@@ -24,11 +23,10 @@ class Asset {
     
     static constraints = {
         assetCategory(nullable:false, blank:false)
-        description(blank:true, maxSixe:1500)
         make(blank:false)
         model(blank:false)
         serialNumber(blank:true)
-        barcodeNumber(blank:true, nullable:true)
+        details(blank:true, maxSixe:1500)
         assetTag(blank:true)
         aquired(nullable:true)
         status(nullable:false)

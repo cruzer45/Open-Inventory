@@ -11,7 +11,8 @@ import org.junit.*
 @TestFor(AssetCategory)
 class AssetCategoryTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testCreateAssetCategory() {
+        AssetCategory assetCategory = new AssetCategory(category:'CPU', details:'This is the details',deleted:'false').save();
+		assertNotNull assetCategory.id
     }
 }

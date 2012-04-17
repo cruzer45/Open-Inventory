@@ -20,7 +20,8 @@ class AssetCategoryCRUDComposerTests {
         // Tear down logic here
     }
 
-    void testSomething() {
-        fail "Implement me"
+    void testCreateAssetCategory() {
+        AssetCategory assetCategory = new AssetCategory(category:'CPU', details:'This is the details');
+		assertNotNull assetCategory.id
     }
 }

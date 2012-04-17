@@ -43,7 +43,7 @@
 							</row>
 							<row>
 								<label value="Details" />
-								<textbox id="txtDescription" width="98%"
+								<textbox id="txtDetails" width="98%"
 									rows="6" />
 							</row>
 							<row>
